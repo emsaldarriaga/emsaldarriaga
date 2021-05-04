@@ -1,5 +1,5 @@
-### Enrique M. Saldarriaga
-## Health Economist, Research Assistant and PhD student at (The CHOICE Institute)[https://sop.washington.edu/choice/].
+## Enrique M. Saldarriaga
+# Health Economist, Research Assistant and PhD student at [The CHOICE Institute](https://sop.washington.edu/choice/).
 This is my personal academic site.
 
 
