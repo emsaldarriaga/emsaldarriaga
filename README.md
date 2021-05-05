@@ -1,4 +1,7 @@
-### Hi there 👋
+# Enrique M. Saldarriaga
+**Health Economist, Research Assistant and PhD student at [The CHOICE Institute](https://sop.washington.edu/choice/).**
+This is my personal academic site.
+
 
 <!--
 **emsaldarriaga/emsaldarriaga** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
