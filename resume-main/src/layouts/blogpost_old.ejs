@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include ('partials/head-post') %>
+  <body>
+    <%- include ('partials/header') %>
+    <main>
+	<div class="container">
+	<section class="home-section mh90">
+	<img src="/assets/images/<%= coverImage %>" class="project-img">
+	<%- include ('partials/post-title') %>
+        <%- body %>
+	<p style="text-align:center; margin-top:6rem;">
+        <a class="btn btn-themed" style="margin:5px;text-align:center;" href="/#projects">Back to all projects</a>
+	</p>
+	</section>
+	</div>
+    </main>
+    <%- include ('partials/footer') %>
+    <%- include ('partials/scripts') %>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include ('partials/head-post') %>
+  <body>
+    <%- include ('partials/header') %>
+    <main>
+	<div class="container">
+	<section class="home-section mh90">
+	<img src="/assets/images/<%= coverImage %>" class="project-img">
+	<%- include ('partials/post-title') %>
+        <%- body %>
+	<p style="text-align:center; margin-top:6rem;">
+	<% canonicalUrl = canonicalUrl.split('/').slice(-1) %>
+	<%if (canonicalUrl.toString() == "north-america.html"){ %>
+		<p class="view-all" style="text-align:center;">
+		  <a href="/projects/latin-america" class="btn btn-themed" style="width: 220px;margin:15px">
+			Projects: Latin-America
+			<i class="fa fa-angle-double-right"></i>
+		  </a>
+		  <a href="/projects/sub-saharan-africa" class="btn btn-themed" style="width: 220px;">
+			Projects: Sub-saharan Africa
+			<i class="fa fa-angle-double-right"></i>
+		  </a>
+		</p> 
+	<% } %>
+	<% if (canonicalUrl.toString() == "latin-america.html"){%>
+		<p class="view-all" style="text-align:center;">
+		  <a href="/projects/north-america" class="btn btn-themed" style="width: 220px;margin:15px">
+			Projects: North-America
+			<i class="fa fa-angle-double-right"></i>
+		  </a>
+		  <a href="/projects/sub-saharan-africa" class="btn btn-themed" style="width: 220px;">
+			Projects: Sub-saharan Africa
+			<i class="fa fa-angle-double-right"></i>
+		  </a>
+		</p> 
+	<% } %>
+	<% if (canonicalUrl.toString() == "sub-saharan-africa.html"){%>
+		<p class="view-all" style="text-align:center;">
+		  <a href="/projects/north-america" class="btn btn-themed" style="width: 220px;margin:15px">
+			Projects: North-America
+			<i class="fa fa-angle-double-right"></i>
+		  </a>
+		  <a href="/projects/latin-america" class="btn btn-themed" style="width: 220px;">
+			Projects: Latin America
+			<i class="fa fa-angle-double-right"></i>
+		  </a>
+		</p> 
+	<% } %>
+	</p>
+	</section>
+	</div>
+    </main>
+    <%- include ('partials/footer') %>
+    <%- include ('partials/scripts') %>
+  </body>
+</html>
