@@ -1,9 +1,9 @@
 // Add your global site properties here
 module.exports = {
   site: {
-    url: 'https://awesome-lichterman-a65640.netlify.app/',
-    title: `Enrique Saldarriaga | Resume`,
-    defaultImage: '/assets/images/resume.jpg',
+    url: 'https://emsaldarriaga.org/',
+    title: `Enrique Saldarriaga | Health Economist`,
+    defaultImage: '/assets/images/resume.png',
     monthNames: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     lang: 'en',
     author: 'Enrique Saldarriaga',
