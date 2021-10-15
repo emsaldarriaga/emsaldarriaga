@@ -3,7 +3,7 @@ module.exports = {
   site: {
     url: 'https://emsaldarriaga.org/',
     title: `Enrique Saldarriaga | Health Economist`,
-    defaultImage: '/assets/images/resume.png',
+    defaultImage: '/assets/images/resume.jpg',
     monthNames: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     lang: 'en',
     author: 'Enrique Saldarriaga',
