@@ -11,4 +11,4 @@ coverImage: img3.jpeg
     *   Develop a decision model for the relationship between zip code estimates of HIV-prevalence, allocated resources, and health outcomes
     *   Quantify the expected value of perfect and partial information of reducing decision uncertainty when using local HIV-prevalence estimates
 2.  Preferences elicitation among HIV patients for long-acting injectable antiretroviral therapy
-3.  Generalized Simultaneous Equation Model to evaluate an alternate metric to the BMI to reflect health rather than growth
+3.  Generalized Simultaneous Equation Model to evaluate an alternate metric to the BMI to reflect health rather than growth. [*Conference paper*](http://dx.doi.org/10.13140/RG.2.2.34973.23528)
