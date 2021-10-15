@@ -7,8 +7,8 @@ module.exports = {
     monthNames: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     lang: 'en',
     author: 'Enrique Saldarriaga',
-    quote: 'PhD Student resume',
-    description: 'PhD Student resume and listed publications',
+    quote: 'Resume',
+    description: 'Professional resume, academic publications, and projects',
     currentYear: new Date().getFullYear(),
 	// replace #ID below and uncomment section in footer partial
     google_analytics: '#ID',
