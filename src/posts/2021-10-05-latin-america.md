@@ -2,7 +2,7 @@
 title: Latin America
 date: '2021-10-05'
 excerpt: >- 
-  This is a list of projects I am involved in that focus on Latin America.
+  List of ongoing projects that focus on Latin American countries.
 coverImage: img3.jpeg
 ---
 1.  Impact of COVID-19 in healthcare access and quality among patients diagnosed with Down Syndrome in Peru.

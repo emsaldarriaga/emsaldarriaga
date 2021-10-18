@@ -2,7 +2,7 @@
 title: Sub-saharan Africa
 date: '2021-10-06'
 excerpt: >- 
-  This is a list of projects I am involved in that focus on Sub-saharan Africa.
+  List of ongoing projects that focus on Sub-Saharan African countries.
 coverImage: img3.jpeg
 ---
 1.  Costing analysis of theimplementation of an Adolescent Transition Package (ATP) within the Adolescent Transition To Adult Care for HIV-infected adolescents in Kenya (ATTACH) clinical trial.
