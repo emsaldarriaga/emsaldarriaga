@@ -1,7 +1,7 @@
 backend:
   name: git-gateway
   repo: emsaldarriaga/emsaldarriaga
-  branch: master
+  branch: main
 
 # This line should *not* be indented
 publish_mode: editorial_workflow
