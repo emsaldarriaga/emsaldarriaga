@@ -1,6 +1,6 @@
 # Enrique M. Saldarriaga
 **Health Economist, Research Assistant and PhD candidate at [The CHOICE Institute](https://sop.washington.edu/choice/).**
-**Visit my web site at [emsaldarriaga.com](https://emsaldarriaga.org/)**
+**Visit my web site at [emsaldarriaga.org](https://emsaldarriaga.org/)**
 
 
 <!--
