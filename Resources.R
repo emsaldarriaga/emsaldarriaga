@@ -3,7 +3,6 @@ do.call(fun, element) #fun=function
 city_priors = do.call(cbind, mget(paste0("cpr_",prop_priors)))
 city_priors =do.call(cbind,mget(ls(pattern = "cpr_"))) #mget to gather multiple elements
 
-
 CapStr <- function(y) { #to  capitalize only first letter
   c <- strsplit(y, " ")[[1]]
   paste(toupper(substring(c, 1,1)), substring(c, 2),
@@ -72,77 +71,6 @@ func = function(x){
   return(out)
 }
 
-#Check for the existence of a URL. Source: https://stackoverflow.com/questions/52911812/check-if-url-exists-in-r
-url_exists <- function(x, non_2xx_return_value = FALSE, quiet = FALSE,...) {
-  
-  suppressPackageStartupMessages({
-    require("httr", quietly = FALSE, warn.conflicts = FALSE)
-  })
-  
-  # you don't need thse two functions if you're alread using `purrr`
-  # but `purrr` is a heavyweight compiled pacakge that introduces
-  # many other "tidyverse" dependencies and this doesnt.
-  
-  capture_error <- function(code, otherwise = NULL, quiet = TRUE) {
-    tryCatch(
-      list(result = code, error = NULL),
-      error = function(e) {
-        if (!quiet)
-          message("Error: ", e$message)
-        
-        list(result = otherwise, error = e)
-      },
-      interrupt = function(e) {
-        stop("Terminated by user", call. = FALSE)
-      }
-    )
-  }
-  
-  safely <- function(.f, otherwise = NULL, quiet = TRUE) {
-    function(...) capture_error(.f(...), otherwise, quiet)
-  }
-  
-  sHEAD <- safely(httr::HEAD)
-  sGET <- safely(httr::GET)
-  
-  # Try HEAD first since it's lightweight
-  res <- sHEAD(x, ...)
-  
-  if (is.null(res$result) || 
-      ((httr::status_code(res$result) %/% 200) != 1)) {
-    
-    res <- sGET(x, ...)
-    
-    if (is.null(res$result)) return(NA) # or whatever you want to return on "hard" errors
-    
-    if (((httr::status_code(res$result) %/% 200) != 1)) {
-      if (!quiet) warning(sprintf("Requests for [%s] responded but without an HTTP status code in the 200-299 range", x))
-      return(non_2xx_return_value)
-    }
-    
-    return(TRUE)
-    
-  } else {
-    return(TRUE)
-  }
-  
-}
-
-#Alternative to URL exsists; source; https://stackoverflow.com/questions/7012796/ping-a-website-in-r
-ping <- function(x, stderr = FALSE, stdout = FALSE, ...){
-  pingvec <- system2("ping", x,
-                     stderr = FALSE,
-                     stdout = FALSE,...)
-  if (pingvec == 0) TRUE else FALSE
-}
-
-#404 error != not exists. The url could 'exist' but yields a "not found" error. The options above won't help
-#Determine 404 error: Source: https://stackoverflow.com/questions/23139357/how-to-determine-if-a-url-object-returns-404-not-found
-##Used: "Porject/VaxHesitancy/GovRaceResults.R"
-ur = httr::http_status(httr::GET("url"))
-ur$category == "success" #when the url yields reuslts, and "Client error" otherwise
-
-
 #Scrap data from web####
 #Source of nuances with html_table: "DSSides/MingWage.R"
 #See: https://stackoverflow.com/questions/1395528/scraping-html-tables-into-r-data-frames-using-the-xml-package
@@ -182,6 +110,70 @@ hoc = "https://en.wikipedia.org/wiki/Perry_Adkisson" %>%
   html_nodes(xpath = '//*[@class="infobox biography vcard"]') %>% 
   html_text()
 
+## Checking for the existance of a URL####
+#Check for the existence of a URL. Source: https://stackoverflow.com/questions/52911812/check-if-url-exists-in-r
+url_exists <- function(x, non_2xx_return_value = FALSE, quiet = FALSE,...) {
+  
+  suppressPackageStartupMessages({
+    require("httr", quietly = FALSE, warn.conflicts = FALSE)
+  })
+  
+  # you don't need thse two functions if you're alread using `purrr`
+  # but `purrr` is a heavyweight compiled pacakge that introduces
+  # many other "tidyverse" dependencies and this doesnt.
+  
+  capture_error <- function(code, otherwise = NULL, quiet = TRUE) {
+    tryCatch(
+      list(result = code, error = NULL),
+      error = function(e) {
+        if (!quiet)
+          message("Error: ", e$message)
+        
+        list(result = otherwise, error = e)
+      },
+      interrupt = function(e) {
+        stop("Terminated by user", call. = FALSE)
+      }
+    )
+  }
+  
+  safely <- function(.f, otherwise = NULL, quiet = TRUE) {
+    function(...) capture_error(.f(...), otherwise, quiet)
+  }
+  
+  sHEAD <- safely(httr::HEAD)
+  sGET <- safely(httr::GET)
+  
+  # Try HEAD first since it's lightweight
+  res <- sHEAD(x, ...)
+  if (is.null(res$result) || 
+      ((httr::status_code(res$result) %/% 200) != 1)) {
+    res <- sGET(x, ...)
+    if (is.null(res$result)) return(NA) # or whatever you want to return on "hard" errors
+    if (((httr::status_code(res$result) %/% 200) != 1)) {
+      if (!quiet) warning(sprintf("Requests for [%s] responded but without an HTTP status code in the 200-299 range", x))
+      return(non_2xx_return_value)
+    }
+    return(TRUE)
+  } else {
+    return(TRUE)
+  }
+}
+
+#Alternative to URL exsists; source; https://stackoverflow.com/questions/7012796/ping-a-website-in-r
+ping <- function(x, stderr = FALSE, stdout = FALSE, ...){
+  pingvec <- system2("ping", x,
+                     stderr = FALSE,
+                     stdout = FALSE,...)
+  if (pingvec == 0) TRUE else FALSE
+}
+
+#404 error != not exists. The url could 'exist' but yields a "not found" error. The options above won't help
+#Determine 404 error: Source: https://stackoverflow.com/questions/23139357/how-to-determine-if-a-url-object-returns-404-not-found
+##Used: "Porject/VaxHesitancy/GovRaceResults.R"
+ur = httr::http_status(httr::GET("url"))
+ur$category == "success" #when the url yields reuslts, and "Client error" otherwise
+
 #Requiring####
 read = c("rvest","readxl","rlist","htmltab","httr","readr","htmltools","XML")
 apis = c("tidyverse","tidycensus","tigris","censusapi","bea.R","idbr")
@@ -200,6 +192,12 @@ ip = as.data.frame(installed.packages()[,c(1,3:4)])
 ip = ip[is.na(ip$Priority),1:2,drop=FALSE]
 ip
 #write.table(ip,"C:/Users/irn13/Downloads/RPackages.txt",sep="\t",row.names=FALSE) #deleted
+
+#Fonts: https://stackoverflow.com/questions/34522732/changing-fonts-in-ggplot2; https://statisticaloddsandends.wordpress.com/2021/07/08/using-different-fonts-with-ggplot2/
+library(extrafont);font_import();loadfonts(device = "win")
+library(showtext);font_add_google("Montserrat", "Montserrat");font_add_google("Roboto", "Roboto")
+font_families() #all font families loaded
+font.files() #all fonts available
 
 #Extracting characters####
 #SOurce: "DSSides/PercentileHeight.R", "MinWage.R"
@@ -282,11 +280,19 @@ quantsf=formatC(quants, format = "d", big.mark = ",", big.interval = 3) #format
 
 dplyr::case_when() #for multiple if-conditions, susbtitute of nesting. https://dplyr.tidyverse.org/reference/case_when.html
 
-#Fonts: https://stackoverflow.com/questions/34522732/changing-fonts-in-ggplot2; https://statisticaloddsandends.wordpress.com/2021/07/08/using-different-fonts-with-ggplot2/
-library(extrafont);font_import();loadfonts(device = "win")
-library(showtext);font_add_google("Montserrat", "Montserrat");font_add_google("Roboto", "Roboto")
-font_families() #all font families loaded
-font.files() #all fonts available
+##Declare a col within a DF with a string
+re = function(df, x){ 
+  y = df %>% select(!!x) %>% max()
+  print(y)
+}
+# !!dd indicates that dd is a representation of a column within a data frame, not an object and in that way is different from the get()
+re(import_df2,"confirmed")
+##sym() is a substitute.
+rex = function(df, x){ 
+  y = df %>% select(sym(x)) %>% max()
+  print(y)
+}
+rex(import_df2,"confirmed")
 
 #Resize image
 x <- EBImage::readImage("../../../../fig.jpg")
