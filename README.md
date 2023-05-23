@@ -1,5 +1,5 @@
 # Enrique M. Saldarriaga
-**Health Economist, Research Assistant and PhD candidate at [The CHOICE Institute](https://sop.washington.edu/choice/).**
+**Health Economist, PE Fellow in the Division of STD Prevention, CDC.**
 **Visit my web site at [emsaldarriaga.org](https://emsaldarriaga.org/)**
 
 
