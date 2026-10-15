@@ -1,5 +1,5 @@
 # Enrique M. Saldarriaga
-**Health Economist, PE Fellow in the Division of STD Prevention, CDC.**
+**Economist & Evidence-to-Decision Expert.**
 **Visit my web site at [emsaldarriaga.org](https://emsaldarriaga.org/)**
 
 
